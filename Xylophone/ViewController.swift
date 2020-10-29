@@ -18,12 +18,11 @@ class ViewController: UIViewController {
     }
 
     @IBAction func buttonPressed(_ sender: UIButton) {
-        print(sender.currentTitle)
-        playSound()
+        playSound(soundName: sender.currentTitle!)
     }
     
-    func playSound() {
-        guard let url = Bundle.main.url(forResource: "C", withExtension: "wav") else { return }
+    func playSound(soundName: String) {
+        guard let url = Bundle.main.url(forResource: soundName, withExtension: "wav") else { return }
         
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
